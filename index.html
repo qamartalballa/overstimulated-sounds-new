@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>OVERSTIMULATED</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 40px;
+      background-color: black;
+      font-family: Helvetica, Arial, sans-serif;
+      color: white;
+      text-align: center;
+    }
+
+    h1 {
+      font-weight: bold;
+      text-transform: uppercase;
+      font-size: 48px;
+      margin-bottom: 50px;
+    }
+
+    .gif-button {
+      width: 200px;
+      margin: 10px;
+      cursor: pointer;
+      display: inline-block;
+      transition: transform 0.2s, box-shadow 0.2s;
+      border: 4px solid transparent; 
+      border-radius: 10px;
+    }
+
+ 
+    .gif-button:hover {
+      transform: scale(1.05);
+    }
+
+    
+    .active {
+      box-shadow: 0 0 20px white; 
+      transform: scale(1.1);
+      border-color: black;
+    }
+  </style>
+</head>
+<body>
+
+<h1>OVERSTIMULATED.COM</h1>
+
+<audio controls src="https://raw.githubusercontent.com/qamartalballa/REPO/main/test3.mp3"></audio>
+
+<img src="test1.png" class="gif-button" id="gif1" onclick="toggleGIF(this, 'test1.png', 'test1.gif')">
+<img src="test2.png" class="gif-button" id="gif2" onclick="toggleGIF(this, 'test2.png', 'test2.gif')">
+<img src="test3.png" class="gif-button" id="gif3" onclick="toggleGIF(this, 'test3.png', 'test3.gif')">
+
+<script>
+  function toggleGIF(element, placeholder, gif) {
+    if (element.src.endsWith(gif)) {
+      element.src = placeholder;      
+      element.classList.remove('active'); 
+    } else {
+      element.src = gif;             
+      element.classList.add('active');    
+    }
+  }
+</script>
+
+</body>
+</html>
