@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me</title>
+
+    <style>
+      html, body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+
+      body {
+        background-image: url("ABOUT.png");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        font-family: Arial, sans-serif;
+        position: relative;
+      }
+
+      /* IMAGE WRAPPER (keeps position stable) */
+      .img-wrap {
+        position: absolute;
+        top: 31%;
+        width: 3.3%;
+      }
+
+      .img-wrap img {
+        width: 100%;
+        height: auto;
+        display: block;
+        transition: transform 0.3s ease;
+        transform-origin: center center;
+      }
+
+      /* RED OVERLAY ON HOVER */
+      .img-wrap::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: red;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+      }
+
+      .img-wrap:hover img {
+        transform: scale(1.2);
+      }
+
+      .img-wrap:hover::after {
+        opacity: 1;
+      }
+
+      /* POSITIONING FOR EACH IMAGE */
+      .img-wrap.blue {
+        left: 83.35%; /* original blue image */
+      }
+
+      .img-wrap.green {
+        left: 50%; /* new green image further left */
+      }
+
+      /* BLINKING TEXT */
+      .blinking-text {
+        position: absolute;
+        top: 47%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-family: Courier, monospace;
+        font-size: 15px;
+        color: black;
+        text-transform: uppercase;
+        animation: fadeBlink 2s infinite;
+      }
+
+      @keyframes fadeBlink {
+        0%, 100% { opacity: 0; }
+        50% { opacity: 1; }
+      }
+
+      /* BACK HOME LINK */
+      .back-home {
+        position: absolute;
+        top: 22px;
+        left: 8.5%;
+        transform: translateX(-50%);
+        font-family: Helvetica, sans-serif;
+        font-size: 20px;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: black;
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      .back-home:hover {
+        font-size: 23px;
+        color: #FFE000;
+      }
+
+      /* BLUE OVERLAY */
+      #color-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #124d94; /* original blue overlay */
+        opacity: 0;
+        display: block;
+        z-index: 1000;
+        pointer-events: none;
+        transition: opacity 0.5s ease;
+      }
+      
+     .popup-text {
+  position: fixed;
+  top: 70%;
+  right: 10%;
+  width: 30%;
+  font-family: Courier, monospace;
+  color: white;
+  font-size: 16px;
+  line-height: 1.5;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+
+  z-index: 2000; /* <<< Add this line to put text on top */
+}
+
+
+      /* GREEN OVERLAY */
+      #green-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #96993c; /* new green overlay */
+        opacity: 0;
+        display: block;
+        z-index: 1000;
+        pointer-events: none;
+        transition: opacity 0.5s ease;
+      }
+
+      /* POPUP IMAGES */
+      .popup-image {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 60%;
+        height: auto;
+        opacity: 0;
+        z-index: 1001;
+        transition: opacity 0.5s ease;
+        pointer-events: none;
+      }
+      
+      #green-text {
+  position: fixed;
+  top: 35%;          /* vertical position */
+  left: 4%;          /* place on left side */
+  width: 20%;        /* column width */
+  font-family: Courier, monospace;
+  color: white;
+  font-size: 16px;
+  line-height: 1.5;
+  opacity: 0;        /* hidden by default */
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+  z-index: 2000;     /* ensure it's on top of overlays and images */
+}
+
+      
+    </style>
+  </head>
+
+  <body>
+    <!-- BLUE IMAGE (original) -->
+    <div class="img-wrap blue">
+      <img src="blue.jpg" data-target="noah-image">
+    </div>
+
+<div id="blue-text" class="popup-text">
+  Here is a still from a clip of my baby brother Noah (he's a toddler now). My videos include many of my loved ones who I tend to feel quite protective over (say mashallah) which makes me not want to share any of the videos, can that be worked around?
+</div>
+
+    <!-- GREEN IMAGE (new) -->
+    <div class="img-wrap green">
+      <img src="green.jpg" data-target="fifth-image">
+    </div>
+
+<!-- GREEN IMAGE TEXT -->
+<div id="green-text" class="popup-text">
+  If a video was filmed long ago, teh thought of sharing the clip only feels fun. Here is a frame from a #vlog I made in middle school the first time my mom let me go to the mall with my friends (HUGEEE deal). We got Frappuccinos and shopped for training bras #peaktimes 
+</div>
+
+    <!-- Blinking text -->
+    <div class="blinking-text">Click squares to explore</div>
+
+    <!-- Back home link -->
+    <a href="index2.html" class="back-home">Back to Homepage</a>
+
+    <!-- Overlays -->
+    <div id="color-overlay"></div> <!-- blue overlay -->
+    <div id="green-overlay"></div> <!-- green overlay -->
+
+    <!-- Popup images -->
+    <img id="noah-image" class="popup-image" src="noah.png" alt="Noah">
+    <img id="fifth-image" class="popup-image" src="fifth.png" alt="Fifth">
+
+    <!-- SCRIPT -->
+   <script>
+  // BLUE IMAGE CLICK
+  const blueImage = document.querySelector('.img-wrap.blue img');
+  const overlay = document.getElementById('color-overlay');
+  const popupImages = document.querySelectorAll('.popup-image');
+  const blueText = document.getElementById('blue-text'); // new text element
+
+  blueImage.addEventListener('click', () => {
+      overlay.style.opacity = '0.7';
+      overlay.style.pointerEvents = 'auto';
+
+      // Hide all popup images first
+      popupImages.forEach(img => {
+          img.style.opacity = '0';
+          img.style.pointerEvents = 'none';
+      });
+
+      // Show target popup
+      const targetId = blueImage.dataset.target;
+      const targetImage = document.getElementById(targetId);
+      if (targetImage) {
+          targetImage.style.opacity = '1';
+          targetImage.style.pointerEvents = 'auto';
+      }
+
+      // Show blue text
+      blueText.style.opacity = '1';
+      blueText.style.pointerEvents = 'auto';
+  });
+
+  overlay.addEventListener('click', () => {
+      overlay.style.opacity = '0';
+      overlay.style.pointerEvents = 'none';
+
+      popupImages.forEach(img => {
+          img.style.opacity = '0';
+          img.style.pointerEvents = 'none';
+      });
+
+      // Hide blue text
+      blueText.style.opacity = '0';
+      blueText.style.pointerEvents = 'none';
+  });
+
+  // GREEN IMAGE CLICK
+  const greenImage = document.querySelector('.img-wrap.green img');
+  const greenOverlay = document.getElementById('green-overlay');
+  const fifthImage = document.getElementById('fifth-image');
+
+  const greenText = document.getElementById('green-text'); // new green text
+
+greenImage.addEventListener('click', () => {
+    greenOverlay.style.opacity = '0.7';
+    greenOverlay.style.pointerEvents = 'auto';
+
+    // Hide all popup images first
+    popupImages.forEach(img => {
+        img.style.opacity = '0';
+        img.style.pointerEvents = 'none';
+    });
+
+    // Show green target popup
+    fifthImage.style.opacity = '1';
+    fifthImage.style.pointerEvents = 'auto';
+
+    // Show green text
+    greenText.style.opacity = '1';
+    greenText.style.pointerEvents = 'auto';
+});
+
+greenOverlay.addEventListener('click', () => {
+    greenOverlay.style.opacity = '0';
+    greenOverlay.style.pointerEvents = 'none';
+
+    fifthImage.style.opacity = '0';
+    fifthImage.style.pointerEvents = 'none';
+
+    // Hide green text
+    greenText.style.opacity = '0';
+    greenText.style.pointerEvents = 'none';
+});
+
+</script>
+
+  </body>
+</html>

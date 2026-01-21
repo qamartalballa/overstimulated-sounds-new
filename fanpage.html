@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My FAN Page</title>
+
+    <style>
+    
+    
+      html, body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden; /* prevents scrolling */
+      }
+      
+      .text-block {
+        position: absolute;
+        top: 45%;
+        left: 25%;
+        transform: translate(-50%, -50%);
+        font-family: "Courier New", Courier, monospace;
+        font-size: 1rem;
+        line-height: 1.4;
+        color: #422913;
+        z-index: 15;
+        text-align: none;
+        width: 27vw;
+        font-weight: bold;
+      }
+
+
+
+body {
+        background-image: url("fpbg.png");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-color: black;
+        font-family: Arial, sans-serif;
+        position: relative;
+        overflow: hidden;
+      }
+      
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: black;
+        position: relative; /* allows absolute positioning of other elements */
+      }
+
+      /* SHELF IMAGE */
+      .shelf {
+        width: 120vw;       /* make it bigger than the screen width */
+        height: auto;       /* maintain aspect ratio */
+        max-height: 100vh;  /* prevent it from overflowing vertically */
+        object-fit: contain;
+transform: translate(250px, 160px)
+
+      }
+      
+.orangenikki {
+  max-width: 50vw;
+  max-height: 50vh;
+  object-fit: contain;
+  position: absolute;
+  top: 11%;
+  left: 29%;  /* first image on the left */
+   transform: rotate(25deg);
+}
+
+.pinkinikki {
+  max-width: 50vw;
+  max-height: 50vh;
+  object-fit: contain;
+  position: absolute;
+  top: 11%;
+  left: 32%;  /* second image to the right */
+  transform: rotate(25deg);
+   z-index: 2; 
+}
+
+.clock {
+   position: absolute; 
+  top: 29%;
+  left: 58%; 
+  z-index: 1; 
+ width: 17vw; 
+  height: auto; 
+}
+  .purplewimpy 
+  { position: absolute; 
+  top: 40%;
+  left: 58%; 
+  z-index: 2; 
+ width: 27vw; 
+  height: auto; }
+  
+  .bluewimpy   
+  { position: absolute; 
+  top: 36%; 
+  left: 58%; 
+  z-index: 2; 
+  width: 27vw; 
+  height: auto; }
+  
+  .brownwimpy  
+  { position: absolute; 
+  top: 33%; 
+  left: 58%; 
+  z-index: 2; 
+  width: 27vw; 
+  height: auto; }
+  
+  .greenwimpy  
+  { position: absolute;
+  top: 29%; 
+  left: 58%;
+  z-index: 2; 
+  width: 27vw; 
+  height: auto; }
+
+  
+   .back-link {
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+  color: black;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 1.4rem;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.back-link:hover {
+  color: #ffd800;
+  font-size: 1.6rem;
+}
+
+img:not(.clock):not(.shelf):hover {
+  transform: scale(1.05);
+  z-index: 5;
+}
+
+
+
+
+    </style>
+  </head>
+
+  <body>
+
+    <img src="SHELF.png" alt="bookshelf" class="shelf">
+    
+    <div class="text-block">
+  <span> When I first got into reading as a child I picked up the "Diary of a Wimpy Kid" series and naturally I was hooked. The "Diary series" genre then quickly became a favorite of mine so I also ended up loving the "Nikkis Dagbok" books too! While I can't remember exactly what inspired me to start keeping journals and filming videos, I do think these books left a huge impression on me and in retrospect I think they might have ignited my love for the act of documenting my life in some way or other.</span>
+</div>
+
+
+
+    <img src="orangenikki.png" alt="orange nikki" class="orangenikki">
+    <img src="pinknikki.png" alt="pink nikki" class="pinkinikki">
+    
+    <img src="clock.png" alt="clock" class="clock">
+    
+    <img src="purplewimpy.png" alt="purple wimpy" class="purplewimpy">
+    <img src="bluewimpy.png" alt="blue wimpy" class="bluewimpy">
+    <img src="brownwimpy.png" alt="brown wimpy" class="brownwimpy">
+    <img src="greenwimpy.png" alt="green wimpy" class="greenwimpy"> 
+    
+ 
+    <a href="index2.html" class="back-link">back to homepage</a>
+
+  </body>
+</html>

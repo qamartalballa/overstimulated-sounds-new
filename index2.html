@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The web site of Qamart</title>
+
+    <style>
+      html, body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      body {
+        background-image: url("https://i.pinimg.com/1200x/f6/10/d6/f610d6d90b26e34d067df73bfc2ee95b.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-color: black;
+        font-family: Arial, sans-serif;
+        position: relative;
+        overflow: hidden;
+      }
+
+      /* Center image */
+      .center-image {
+        position: absolute;
+        top: 45%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        max-width: 25vw;
+        height: auto;
+        border: 5px solid black;
+        box-sizing: border-box;
+        z-index: 10;
+      }
+
+      /* Centered bold title */
+      .main-title {
+        position: absolute;
+        top: 23%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 3rem;
+        font-weight: 900;
+        color: #ffd800;
+        letter-spacing: 0.06em;
+        text-align: center;
+        white-space: nowrap;
+        z-index: 15;
+      }
+
+      /* Right-side typewriter text */
+      .text-block {
+        position: absolute;
+        top: 45%;
+        left: 72%;
+        transform: translate(-50%, -50%);
+        font-family: "Courier New", Courier, monospace;
+        font-size: 1rem;
+        line-height: 1.4;
+        color: white;
+        z-index: 15;
+        text-align: none;
+        width: 27vw;
+      }
+
+      .text-block span {
+        display: block;
+        margin-bottom: 6px;
+      }
+      
+      /* Second text block position */
+.text-block.second-block {
+  top: 60%;    /* adjust vertical placement as needed */
+  left: 30%;   /* same horizontal as first block */
+  width: 20vw;
+   text-align: right;
+}
+
+
+     /* Links container below image */
+.links {
+  position: absolute;
+  top: calc(45% + 12.5vw + 8rem);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+  display: flex;           /* arrange links in a row */
+  gap: 2rem;               /* space between links */
+  justify-content: center; /* center the row horizontally */
+}
+
+/* All links style */
+.links a {
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  text-decoration: none;
+  color: black;                /* all links black by default */
+  transition: all 0.2s ease;
+}
+
+/* Hover effect: enlarge text + yellow color */
+.links a:hover {
+  font-size: 1.4rem;
+  color: #ffd800;              /* yellow on hover */
+}
+
+    </style>
+  </head>
+
+  <body>
+
+    <div class="main-title">
+      WELCOME TO MY HOMEPAGE
+    </div>
+
+    
+<div class="text-block">
+  <span>My name is Qamar and ever since I was little I have liked to document my life in the form of videos. Every once in a while I get the urge to do something with all the years of footage but I have yet to decide what that would look like.</span>
+</div>
+
+<div class="text-block second-block">
+  <span>I am also quite obsessed with stripes atm. This is a picture of me wearing my favourite striped scarf!</span>
+</div>
+
+    <img src="photobooth.JPG" class="center-image">
+
+    <div class="links">
+      <a href="ABOUT.html">about my homepage</a>
+      <a href="LINKS.html">visit my linkpage</a>
+      <a href="fanpage.html">visit my fanpage</a>
+    </div>
+
+  </body>
+</html>
