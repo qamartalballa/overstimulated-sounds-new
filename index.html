@@ -65,16 +65,19 @@
 
     /* 2. FIXED: Removed the double ## and applied the font */
     #start-button {
-      font-family: 'Bill Mount', Helvetica, sans-serif;
-      font-size: 150px;
-      color: white;
-      user-select: none;
-      transition: transform 0.3s ease;
-    }
+  font-family: 'Bill Mount', Helvetica, sans-serif;
+  font-size: 150px;
+  color: white;
+  user-select: none;
+  transition: transform 0.3s ease;
+  
+  /* Moves the button 50 pixels to the left */
+  transform: translateX(-50px);
+}
 
-    #start-button:hover {
-        transform: scale(1.1);
-    }
+   #start-button:hover {
+    transform: translateX(-50px) scale(1.1);
+}
 
     h1 {
       font-weight: bold;
