@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-
   <style>
+    /* 1. Register the custom font */
     @font-face {
-  font-family: 'Bill Mount';
+      font-family: 'Bill Mount';
+      src: url('BillaMount-Regular.ttf'); 
+    }
 
-  src: url('BillaMount-Regular.ttf'); 
-}
     body {
       margin: 0;
       padding: 0;
@@ -17,7 +17,6 @@
       color: white;
       text-align: center;
       overflow-x: hidden;
-      /* Using flex on body to center the H1 and the Video Container */
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -64,12 +63,18 @@
       transition: opacity 0.5s ease;
     }
 
-    ##start-button {
-  font-family: 'Bill Mount', Helvetica, sans-serif; /* Fallbacks included */
-  font-size: 80px;
-  color: white;
-  user-select: none;
-}
+    /* 2. FIXED: Removed the double ## and applied the font */
+    #start-button {
+      font-family: 'Bill Mount', Helvetica, sans-serif;
+      font-size: 80px;
+      color: white;
+      user-select: none;
+      transition: transform 0.3s ease;
+    }
+
+    #start-button:hover {
+        transform: scale(1.1);
+    }
 
     h1 {
       font-weight: bold;
@@ -79,12 +84,11 @@
       margin-bottom: 40px;
     }
 
-    /* Centering Container for Videos */
     .video-container {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      max-width: 1000px; /* Limits width so videos don't stretch too far apart */
+      max-width: 1000px;
       gap: 20px;
       padding: 20px;
     }
@@ -116,29 +120,21 @@
     <div id="start-button">start</div>
   </div>
 
-
-
   <audio id="bg-music" loop src="https://github.com/qamartalballa/overstimulated-sounds-new/raw/refs/heads/main/sssbg.mp3"></audio>
   <audio id="audio-v1" loop src="https://github.com/qamartalballa/overstimulated-sounds-new/raw/refs/heads/main/test3.mp3"></audio>
   <audio id="audio-v2" loop src="https://github.com/qamartalballa/overstimulated-sounds-new/raw/refs/heads/main/wind.mp3"></audio>
   <audio id="audio-v3" loop src="https://github.com/qamartalballa/overstimulated-sounds-new/raw/refs/heads/main/rustle.mp3"></audio>
-   <audio id="audio-v4" loop src="https://github.com/qamartalballa/overstimulated-sounds-new/raw/refs/heads/main/bird.mp3"></audio>
-<audio id="audio-v5" loop src="https://github.com/qamartalballa/overstimulated-sounds-new/raw/refs/heads/main/waves.mp3"></audio>
-<audio id="audio-v6" loop src="https://github.com/qamartalballa/overstimulated-sounds-new/raw/refs/heads/main/frog.mp3"></audio>
+  <audio id="audio-v4" loop src="https://github.com/qamartalballa/overstimulated-sounds-new/raw/refs/heads/main/bird.mp3"></audio>
+  <audio id="audio-v5" loop src="https://github.com/qamartalballa/overstimulated-sounds-new/raw/refs/heads/main/waves.mp3"></audio>
+  <audio id="audio-v6" loop src="https://github.com/qamartalballa/overstimulated-sounds-new/raw/refs/heads/main/frog.mp3"></audio>
 
   <div class="video-container">
     <video id="vid1" src="https://github.com/qamartalballa/overstimulated-sounds-new/raw/refs/heads/main/rain.mp4" class="video-button" loop playsinline muted onclick="toggleSyncVideo(1)"></video>
-    
     <video id="vid2" src="https://github.com/qamartalballa/overstimulated-sounds-new/raw/refs/heads/main/wind.mp4" class="video-button" loop playsinline muted onclick="toggleSyncVideo(2)"></video>
-
     <video id="vid3" src="https://github.com/qamartalballa/overstimulated-sounds-new/raw/refs/heads/main/rustle.mp4" class="video-button" loop playsinline muted onclick="toggleSyncVideo(3)"></video>
-    
-     <video id="vid4" src="https://github.com/qamartalballa/overstimulated-sounds-new/raw/refs/heads/main/bird.mp4" class="video-button" loop playsinline muted onclick="toggleSyncVideo(4)"></video>
-     
-      <video id="vid5" src="https://github.com/qamartalballa/overstimulated-sounds-new/raw/refs/heads/main/waves.mp4" class="video-button" loop playsinline muted onclick="toggleSyncVideo(5)"></video>
-      
-      <video id="vid6" src="https://github.com/qamartalballa/overstimulated-sounds-new/raw/refs/heads/main/frog.mp4" class="video-button" loop playsinline muted onclick="toggleSyncVideo(6)"></video>
-      
+    <video id="vid4" src="https://github.com/qamartalballa/overstimulated-sounds-new/raw/refs/heads/main/bird.mp4" class="video-button" loop playsinline muted onclick="toggleSyncVideo(4)"></video>
+    <video id="vid5" src="https://github.com/qamartalballa/overstimulated-sounds-new/raw/refs/heads/main/waves.mp4" class="video-button" loop playsinline muted onclick="toggleSyncVideo(5)"></video>
+    <video id="vid6" src="https://github.com/qamartalballa/overstimulated-sounds-new/raw/refs/heads/main/frog.mp4" class="video-button" loop playsinline muted onclick="toggleSyncVideo(6)"></video>
   </div>
 
   <script>
@@ -180,6 +176,5 @@
       }
     }
   </script>
-
 </body>
 </html>
