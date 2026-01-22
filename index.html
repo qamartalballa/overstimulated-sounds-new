@@ -23,6 +23,7 @@
       min-height: 100vh;
     }
 
+    /* Fixed Controls Container */
     #controls-wrapper {
       position: fixed;
       top: 15px;
@@ -30,7 +31,7 @@
       display: none; 
       flex-direction: column;
       align-items: center;
-      gap: 15px;
+      gap: 10px;
       z-index: 1100;
     }
 
@@ -49,42 +50,29 @@
       transition: all 0.2s ease;
     }
 
-    /* VOLUME SLIDER - COMPLETE FIX */
+    /* VOLUME SLIDER - THIN IVORY LINE */
     #volume-slider {
-      -webkit-appearance: none; /* Disables default look to fix "lag" and colors */
-      appearance: none;
-      width: 4px; /* Thickness of the line */
-      height: 100px;
-      background: #FFFFF0; /* Ivory Line */
+      -webkit-appearance: none;
+      width: 80px;      /* Height of the slider area */
+      height: 1px;      /* Thinness of the ivory line */
+      background: #FFFFF0; 
       outline: none;
-      border-radius: 2px;
       cursor: pointer;
-      /* Rotate to make it vertical without the browser lag */
-      transform: rotate(180deg);
-      writing-mode: bt-lr; 
-      -webkit-appearance: slider-vertical;
+      /* Manual rotation: Right becomes Up */
+      transform: rotate(-90deg) translateX(-45px);
+      transform-origin: left;
+      margin-top: 10px;
     }
 
-    /* Custom Ivory Circle (Thumb) - Chrome/Safari */
+    /* Small Ivory Circle (Thumb) */
     #volume-slider::-webkit-slider-thumb {
       -webkit-appearance: none;
-      appearance: none;
-      width: 12px;
-      height: 12px;
-      background: #FFFFF0; /* Ivory */
-      border-radius: 50%;
-      cursor: pointer;
-      border: none;
-    }
-
-    /* Custom Ivory Circle (Thumb) - Firefox */
-    #volume-slider::-moz-range-thumb {
-      width: 12px;
-      height: 12px;
+      width: 10px;
+      height: 10px;
       background: #FFFFF0;
-      border: none;
       border-radius: 50%;
       cursor: pointer;
+      box-shadow: 0 0 2px rgba(0,0,0,0.5);
     }
 
     #overlay {
@@ -110,6 +98,7 @@
       transition: transform 0.3s ease;
     }
 
+    /* 3-column Grid */
     .video-container {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -124,10 +113,9 @@
       max-width: 280px;
       cursor: pointer;
       transition: transform 0.2s, box-shadow 0.2s;
-      border: none; /* No borders */
+      border: none;
       border-radius: 10px;
       background: #111;
-      outline: none;
     }
 
     /* Ivory Soft Glow */
