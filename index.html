@@ -23,16 +23,16 @@
       min-height: 100vh;
     }
 
-    /* Fixed to the absolute upper left corner */
+    /* Fixed Controls */
     #controls-wrapper {
       position: fixed;
       top: 10px;
-      left: 10px; /* Reduced space to the left edge */
+      left: 10px;
       display: none; 
       flex-direction: column;
       align-items: center;
       z-index: 1100;
-      width: 40px; /* Constrains the width to keep it tight to the edge */
+      width: 40px;
     }
 
     #mute-toggle {
@@ -51,21 +51,14 @@
       margin-bottom: 5px;
     }
 
-    #mute-toggle:hover {
-      background-color: white;
-      color: black;
-    }
-
-    /* VERTICAL SLIDER - TIGHT ALIGNMENT */
     #volume-slider {
       -webkit-appearance: none;
       appearance: none;
-      width: 80px;  /* The length of the line */
-      height: 1px;   /* The thin ivory line */
+      width: 80px;
+      height: 1px;
       background: #FFFFF0;
       outline: none;
       cursor: pointer;
-      /* Rotate and shift so it stays centered under the button */
       transform: rotate(-90deg);
       margin-top: 45px;
       margin-bottom: 40px;
@@ -74,8 +67,6 @@
     #volume-slider::-webkit-slider-thumb {
       -webkit-appearance: none;
       width: 10px;
-      height: 100px; /* Clickable hit area */
-      width: 10px;
       height: 10px;
       background: #FFFFF0;
       border-radius: 50%;
@@ -83,6 +74,43 @@
       border: none;
     }
 
+    /* --- WEBRING STYLING --- */
+    .webring-nav {
+      position: fixed;
+      bottom: 20px;
+      color: #FFFFF0; /* Ivory */
+      font-size: 24px;
+      text-decoration: none;
+      z-index: 1200;
+      font-weight: 100; /* Keeps the lines thin */
+      transition: opacity 0.3s;
+    }
+
+    .webring-nav:hover {
+      opacity: 0.7;
+    }
+
+    #prev-site {
+      left: 25px;
+    }
+
+    #next-site {
+      right: 25px;
+    }
+
+    #webring-info {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: rgba(255, 255, 240, 0.5); /* Faded Ivory */
+      text-decoration: none;
+    }
+
+    /* Video & Overlay Styling */
     #overlay {
       position: fixed;
       top: 0;
@@ -103,7 +131,6 @@
       font-size: 100px;
       color: white;
       user-select: none;
-      transition: transform 0.3s ease;
     }
 
     .video-container {
@@ -123,7 +150,6 @@
       border: none;
       border-radius: 10px;
       background: #111;
-      outline: none;
     }
 
     .active {
@@ -132,9 +158,7 @@
     }
 
     @media (max-width: 768px) {
-      .video-container {
-        grid-template-columns: repeat(2, 1fr);
-      }
+      .video-container { grid-template-columns: repeat(2, 1fr); }
     }
   </style>
 </head>
@@ -148,6 +172,14 @@
   <div id="overlay" onclick="startExperience()">
     <div id="start-button">Pause</div>
   </div>
+
+  <a href="https://drawhorsewithfoot.webcam" class="webring-nav" id="prev-site">←</a>
+  
+  <a href="http://2026.worldwidewebring.club" id="webring-info">
+    Part of 2026.worldwidewebring.club
+  </a>
+
+  <a href="https://how2savedemocracy.now" class="webring-nav" id="next-site">→</a>
 
   <audio id="bg-music" loop src="https://github.com/qamartalballa/overstimulated-sounds-new/raw/refs/heads/main/sssbg.mp3"></audio>
   <audio id="audio-v1" loop src="https://github.com/qamartalballa/overstimulated-sounds-new/raw/refs/heads/main/rainsound.mp3"></audio>
@@ -179,29 +211,17 @@
       music.play();
       controls.style.display = 'flex';
       overlay.style.opacity = '0';
-      setTimeout(() => {
-        overlay.style.display = 'none';
-      }, 500);
+      setTimeout(() => { overlay.style.display = 'none'; }, 500);
     }
 
     volSlider.addEventListener('input', (e) => {
       music.volume = e.target.value;
-      if (e.target.value == 0) {
-        muteBtn.innerText = "🔇";
-      } else {
-        muteBtn.innerText = "🔊";
-        music.muted = false;
-      }
+      muteBtn.innerText = (e.target.value == 0) ? "🔇" : "🔊";
     });
 
     function toggleMute() {
-      if (music.muted) {
-        music.muted = false;
-        muteBtn.innerText = "🔊";
-      } else {
-        music.muted = true;
-        muteBtn.innerText = "🔇";
-      }
+      music.muted = !music.muted;
+      muteBtn.innerText = music.muted ? "🔇" : "🔊";
     }
 
     function toggleSyncVideo(id) {
