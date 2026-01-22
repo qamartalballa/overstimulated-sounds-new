@@ -23,14 +23,16 @@
       min-height: 100vh;
     }
 
+    /* Fixed to the absolute upper left corner */
     #controls-wrapper {
       position: fixed;
-      top: 15px;
-      left: 15px;
+      top: 10px;
+      left: 10px; /* Reduced space to the left edge */
       display: none; 
       flex-direction: column;
       align-items: center;
       z-index: 1100;
+      width: 40px; /* Constrains the width to keep it tight to the edge */
     }
 
     #mute-toggle {
@@ -49,21 +51,30 @@
       margin-bottom: 5px;
     }
 
+    #mute-toggle:hover {
+      background-color: white;
+      color: black;
+    }
+
+    /* VERTICAL SLIDER - TIGHT ALIGNMENT */
     #volume-slider {
       -webkit-appearance: none;
       appearance: none;
-      width: 100px;
-      height: 1px;
+      width: 80px;  /* The length of the line */
+      height: 1px;   /* The thin ivory line */
       background: #FFFFF0;
       outline: none;
       cursor: pointer;
+      /* Rotate and shift so it stays centered under the button */
       transform: rotate(-90deg);
-      margin-top: 50px;
-      margin-bottom: 50px;
+      margin-top: 45px;
+      margin-bottom: 40px;
     }
 
     #volume-slider::-webkit-slider-thumb {
       -webkit-appearance: none;
+      width: 10px;
+      height: 100px; /* Clickable hit area */
       width: 10px;
       height: 10px;
       background: #FFFFF0;
@@ -112,6 +123,7 @@
       border: none;
       border-radius: 10px;
       background: #111;
+      outline: none;
     }
 
     .active {
