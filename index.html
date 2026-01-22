@@ -30,7 +30,7 @@
       display: none; 
       flex-direction: column;
       align-items: center;
-      gap: 12px;
+      gap: 15px;
       z-index: 1100;
     }
 
@@ -49,33 +49,35 @@
       transition: all 0.2s ease;
     }
 
-    /* VOLUME SLIDER CUSTOM STYLING */
+    /* VOLUME SLIDER - COMPLETE FIX */
     #volume-slider {
-      -webkit-appearance: none;
+      -webkit-appearance: none; /* Disables default look to fix "lag" and colors */
       appearance: none;
-      width: 5px;
+      width: 4px; /* Thickness of the line */
       height: 100px;
       background: #FFFFF0; /* Ivory Line */
       outline: none;
       border-radius: 2px;
       cursor: pointer;
-      /* Positioning for vertical appearance */
+      /* Rotate to make it vertical without the browser lag */
+      transform: rotate(180deg);
       writing-mode: bt-lr; 
       -webkit-appearance: slider-vertical;
     }
 
-    /* Smaller Ivory Circle for Chrome/Safari */
+    /* Custom Ivory Circle (Thumb) - Chrome/Safari */
     #volume-slider::-webkit-slider-thumb {
       -webkit-appearance: none;
       appearance: none;
       width: 12px;
       height: 12px;
-      background: #FFFFF0;
+      background: #FFFFF0; /* Ivory */
       border-radius: 50%;
       cursor: pointer;
+      border: none;
     }
 
-    /* Smaller Ivory Circle for Firefox */
+    /* Custom Ivory Circle (Thumb) - Firefox */
     #volume-slider::-moz-range-thumb {
       width: 12px;
       height: 12px;
@@ -122,9 +124,10 @@
       max-width: 280px;
       cursor: pointer;
       transition: transform 0.2s, box-shadow 0.2s;
-      border: none; /* Removed borders */
+      border: none; /* No borders */
       border-radius: 10px;
       background: #111;
+      outline: none;
     }
 
     /* Ivory Soft Glow */
