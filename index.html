@@ -23,94 +23,94 @@
       min-height: 100vh;
     }
 
-    /* Fixed Controls */
+    /* LEFT CONTROLS (Mute & Slider) */
     #controls-wrapper {
       position: fixed;
-      top: 10px;
-      left: 10px;
+      top: 15px;
+      left: 15px;
       display: none; 
       flex-direction: column;
       align-items: center;
       z-index: 1100;
-      width: 40px;
+      width: 30px;
+    }
+
+    /* RIGHT MIRROR (Vertical Webring Text) */
+    #webring-info {
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      font-size: 8px; /* Smaller as requested */
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: rgba(255, 255, 240, 0.4);
+      text-decoration: none;
+      writing-mode: vertical-rl; /* Mirrors the vertical slider */
+      white-space: nowrap;
+      z-index: 1100;
     }
 
     #mute-toggle {
-      background-color: black;
-      color: white;
-      border: 1px solid white;
+      background-color: transparent;
+      color: #FFFFF0;
+      border: 1px solid #FFFFF0;
       border-radius: 50%;
-      width: 35px;
-      height: 35px;
-      font-size: 16px;
+      width: 24px;
+      height: 24px;
+      font-size: 11px;
       cursor: pointer;
       display: flex;
       justify-content: center;
       align-items: center;
       transition: all 0.2s ease;
-      margin-bottom: 5px;
+      margin-bottom: 8px;
+    }
+
+    #mute-toggle:hover {
+      background-color: #FFFFF0;
+      color: black;
     }
 
     #volume-slider {
       -webkit-appearance: none;
       appearance: none;
-      width: 80px;
+      width: 60px;
       height: 1px;
       background: #FFFFF0;
       outline: none;
       cursor: pointer;
       transform: rotate(-90deg);
-      margin-top: 45px;
-      margin-bottom: 40px;
+      margin-top: 30px;
+      margin-bottom: 30px;
     }
 
     #volume-slider::-webkit-slider-thumb {
       -webkit-appearance: none;
-      width: 10px;
-      height: 10px;
+      width: 8px;
+      height: 8px;
       background: #FFFFF0;
       border-radius: 50%;
       cursor: pointer;
       border: none;
     }
 
-    /* --- WEBRING STYLING --- */
+    /* ARROWS STYLING - Smaller */
     .webring-nav {
       position: fixed;
       bottom: 20px;
-      color: #FFFFF0; /* Ivory */
-      font-size: 24px;
+      color: #FFFFF0; 
+      font-size: 18px; /* Smaller arrows */
       text-decoration: none;
       z-index: 1200;
-      font-weight: 100; /* Keeps the lines thin */
+      font-weight: 100;
       transition: opacity 0.3s;
     }
 
-    .webring-nav:hover {
-      opacity: 0.7;
-    }
+    .webring-nav:hover { opacity: 0.7; }
+    #prev-site { left: 25px; }
+    #next-site { right: 25px; }
 
-    #prev-site {
-      left: 25px;
-    }
-
-    #next-site {
-      right: 25px;
-    }
-
-    #webring-info {
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: rgba(255, 255, 240, 0.5); /* Faded Ivory */
-      text-decoration: none;
-    }
-
-    /* Video & Overlay Styling */
+    /* Video & Overlay */
     #overlay {
       position: fixed;
       top: 0;
