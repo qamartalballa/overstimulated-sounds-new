@@ -1,11 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    /* 1. Register the custom font */
     @font-face {
       font-family: 'Bill Mount';
       src: url('BillaMount-Regular.ttf'); 
@@ -25,12 +23,11 @@
       min-height: 100vh;
     }
 
-    /* Floating Controls Container */
     #controls-wrapper {
       position: fixed;
       top: 15px;
       left: 15px;
-      display: none; /* Hidden until start */
+      display: none; 
       flex-direction: column;
       align-items: center;
       gap: 12px;
@@ -52,22 +49,40 @@
       transition: all 0.2s ease;
     }
 
-    #mute-toggle:hover {
-      background-color: white;
-      color: black;
+    /* VOLUME SLIDER CUSTOM STYLING */
+    #volume-slider {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 5px;
+      height: 100px;
+      background: #FFFFF0; /* Ivory Line */
+      outline: none;
+      border-radius: 2px;
+      cursor: pointer;
+      /* Positioning for vertical appearance */
+      writing-mode: bt-lr; 
+      -webkit-appearance: slider-vertical;
     }
 
-    /* Vertical Volume Slider - Styled to be black/minimal */
-    #volume-slider {
-      -webkit-appearance: slider-vertical; /* Webkit support */
-      appearance: slider-vertical;
-      width: 10px;
-      height: 100px;
+    /* Smaller Ivory Circle for Chrome/Safari */
+    #volume-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 12px;
+      height: 12px;
+      background: #FFFFF0;
+      border-radius: 50%;
       cursor: pointer;
-      background: #000;
-      outline: none;
-      border: 1px solid #333; /* Makes the black line visible on black background */
-      border-radius: 5px;
+    }
+
+    /* Smaller Ivory Circle for Firefox */
+    #volume-slider::-moz-range-thumb {
+      width: 12px;
+      height: 12px;
+      background: #FFFFF0;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
     }
 
     #overlay {
@@ -93,15 +108,9 @@
       transition: transform 0.3s ease;
     }
 
-    #start-button:hover {
-      transform: scale(1.1);
-    }
-
-    /* 2x3 Video Grid */
     .video-container {
       display: grid;
-      grid-template-columns: repeat(3, 1fr); /* 3 columns */
-      grid-template-rows: repeat(2, auto);    /* 2 rows */
+      grid-template-columns: repeat(3, 1fr);
       gap: 20px;
       max-width: 900px;
       padding: 40px;
@@ -113,21 +122,17 @@
       max-width: 280px;
       cursor: pointer;
       transition: transform 0.2s, box-shadow 0.2s;
-      border: 1px solid #222;
+      border: none; /* Removed borders */
       border-radius: 10px;
       background: #111;
     }
 
-    .video-button:hover {
+    /* Ivory Soft Glow */
+    .active {
+      box-shadow: 0 0 10px 2px rgba(255, 255, 240, 0.4); 
       transform: scale(1.05);
     }
 
-    .active {
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.4); 
-      border-color: white;
-    }
-
-    /* Mobile responsiveness: switch to 2 columns on smaller screens */
     @media (max-width: 768px) {
       .video-container {
         grid-template-columns: repeat(2, 1fr);
@@ -143,7 +148,7 @@
   </div>
 
   <div id="overlay" onclick="startExperience()">
-    <div id="start-button">Pause</div>
+    <div id="start-button">START</div>
   </div>
 
   <audio id="bg-music" loop src="https://github.com/qamartalballa/overstimulated-sounds-new/raw/refs/heads/main/sssbg.mp3"></audio>
@@ -170,7 +175,6 @@
     const volSlider = document.getElementById('volume-slider');
     const muteBtn = document.getElementById('mute-toggle');
 
-    // Initial setup
     music.volume = 0.5;
 
     function startExperience() {
@@ -182,7 +186,6 @@
       }, 500);
     }
 
-    // Volume Slider Control
     volSlider.addEventListener('input', (e) => {
       const vol = e.target.value;
       music.volume = vol;
@@ -207,7 +210,6 @@
     function toggleSyncVideo(id) {
       const v = document.getElementById('vid' + id);
       const a = document.getElementById('audio-v' + id);
-
       if (v.paused) {
         v.play();
         a.play();
