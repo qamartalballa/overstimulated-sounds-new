@@ -1,7 +1,9 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     /* 1. Register the custom font */
     @font-face {
@@ -15,7 +17,6 @@
       background-color: black;
       font-family: Helvetica, Arial, sans-serif;
       color: white;
-      text-align: center;
       overflow-x: hidden;
       display: flex;
       flex-direction: column;
@@ -24,20 +25,28 @@
       min-height: 100vh;
     }
 
-    #mute-toggle {
+    /* Floating Controls Container */
+    #controls-wrapper {
       position: fixed;
       top: 15px;
       left: 15px;
+      display: none; /* Hidden until start */
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      z-index: 1100;
+    }
+
+    #mute-toggle {
       background-color: black;
       color: white;
       border: 1px solid white;
       border-radius: 50%;
-      width: 30px;
-      height: 30px;
-      font-size: 14px;
+      width: 35px;
+      height: 35px;
+      font-size: 16px;
       cursor: pointer;
-      z-index: 1100;
-      display: none; 
+      display: flex;
       justify-content: center;
       align-items: center;
       transition: all 0.2s ease;
@@ -48,13 +57,26 @@
       color: black;
     }
 
+    /* Vertical Volume Slider - Styled to be black/minimal */
+    #volume-slider {
+      -webkit-appearance: slider-vertical; /* Webkit support */
+      appearance: slider-vertical;
+      width: 10px;
+      height: 100px;
+      cursor: pointer;
+      background: #000;
+      outline: none;
+      border: 1px solid #333; /* Makes the black line visible on black background */
+      border-radius: 5px;
+    }
+
     #overlay {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(0, 0, 0, 0.5);
+      background-color: rgba(0, 0, 0, 0.8);
       display: flex;
       justify-content: center;
       align-items: center;
@@ -63,61 +85,65 @@
       transition: opacity 0.5s ease;
     }
 
-    /* 2. FIXED: Removed the double ## and applied the font */
     #start-button {
-  font-family: 'Bill Mount', Helvetica, sans-serif;
-  font-size: 150px;
-  color: white;
-  user-select: none;
-  transition: transform 0.3s ease;
-
-
-   #start-button:hover {
-    transform: translateX(-70px) scale(1.1);
-}
-
-    h1 {
-      font-weight: bold;
-      text-transform: uppercase;
-      font-size: 48px;
-      margin-top: 20px;
-      margin-bottom: 40px;
+      font-family: 'Bill Mount', Helvetica, sans-serif;
+      font-size: 100px;
+      color: white;
+      user-select: none;
+      transition: transform 0.3s ease;
     }
 
+    #start-button:hover {
+      transform: scale(1.1);
+    }
+
+    /* 2x3 Video Grid */
     .video-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      max-width: 1000px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); /* 3 columns */
+      grid-template-rows: repeat(2, auto);    /* 2 rows */
       gap: 20px;
-      padding: 20px;
+      max-width: 900px;
+      padding: 40px;
+      z-index: 1;
     }
 
     .video-button {
-      width: 250px;
+      width: 100%;
+      max-width: 280px;
       cursor: pointer;
       transition: transform 0.2s, box-shadow 0.2s;
-      border: none; 
+      border: 1px solid #222;
       border-radius: 10px;
       background: #111;
     }
 
     .video-button:hover {
-      transform: scale(1.03);
+      transform: scale(1.05);
     }
 
     .active {
-      box-shadow: 0 0 15px rgba(255, 255, 240, 0.6); 
-      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.4); 
+      border-color: white;
+    }
+
+    /* Mobile responsiveness: switch to 2 columns on smaller screens */
+    @media (max-width: 768px) {
+      .video-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
   </style>
 </head>
 <body>
 
-  <button id="mute-toggle" onclick="toggleMute()">🔊</button>
+  <div id="controls-wrapper">
+    <button id="mute-toggle" onclick="toggleMute()">🔊</button>
+    <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.5">
+  </div>
 
   <div id="overlay" onclick="startExperience()">
-    <div id="start-button">Pause</div>
+    <div id="start-button">START</div>
   </div>
 
   <audio id="bg-music" loop src="https://github.com/qamartalballa/overstimulated-sounds-new/raw/refs/heads/main/sssbg.mp3"></audio>
@@ -140,16 +166,33 @@
   <script>
     const music = document.getElementById('bg-music');
     const overlay = document.getElementById('overlay');
+    const controls = document.getElementById('controls-wrapper');
+    const volSlider = document.getElementById('volume-slider');
     const muteBtn = document.getElementById('mute-toggle');
+
+    // Initial setup
+    music.volume = 0.5;
 
     function startExperience() {
       music.play();
-      muteBtn.style.display = 'flex';
+      controls.style.display = 'flex';
       overlay.style.opacity = '0';
       setTimeout(() => {
         overlay.style.display = 'none';
       }, 500);
     }
+
+    // Volume Slider Control
+    volSlider.addEventListener('input', (e) => {
+      const vol = e.target.value;
+      music.volume = vol;
+      if (vol == 0) {
+        muteBtn.innerText = "🔇";
+      } else {
+        muteBtn.innerText = "🔊";
+        music.muted = false;
+      }
+    });
 
     function toggleMute() {
       if (music.muted) {
