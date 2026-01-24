@@ -40,12 +40,12 @@
       position: fixed;
       top: 15px;
       right: 15px;
-      font-size: 8px; /* Smaller as requested */
+      font-size: 8px;
       text-transform: uppercase;
       letter-spacing: 1px;
       color: rgba(255, 255, 240, 0.4);
       text-decoration: none;
-      writing-mode: vertical-rl; /* Mirrors the vertical slider */
+      writing-mode: vertical-rl;
       white-space: nowrap;
       z-index: 1100;
     }
@@ -94,12 +94,12 @@
       border: none;
     }
 
-    /* ARROWS STYLING - Smaller */
+    /* ARROWS STYLING */
     .webring-nav {
       position: fixed;
       bottom: 20px;
       color: #FFFFF0; 
-      font-size: 18px; /* Smaller arrows */
+      font-size: 18px;
       text-decoration: none;
       z-index: 1200;
       font-weight: 100;
@@ -131,14 +131,16 @@
       font-size: 100px;
       color: white;
       user-select: none;
-       transition: transform 0.3s ease;
-  display: inline-block;
+      transition: transform 0.3s ease;
+      display: block;        /* Fixes width issues */
+      text-align: center;    /* Keeps centered */
+      will-change: transform; /* Fixes flickering/clipping */
     }
 
-  
-#start-button:hover {
-  transform: scale(1.2); /* Makes it 20% larger on hover */
-}
+    #start-button:hover {
+      transform: scale(1.2);
+    }
+
     .video-container {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -180,9 +182,6 @@
   </div>
 
   <a href="https://drawhorsewithfoot.webcam" class="webring-nav" id="prev-site">←</a>
-  
-
-
   <a href="https://how2savedemocracy.now" class="webring-nav" id="next-site">→</a>
 
   <audio id="bg-music" loop src="https://github.com/qamartalballa/overstimulated-sounds-new/raw/refs/heads/main/sssbg.mp3"></audio>
