@@ -23,7 +23,6 @@
       min-height: 100vh;
     }
 
-    /* LEFT CONTROLS (Mute & Slider) */
     #controls-wrapper {
       position: fixed;
       top: 15px;
@@ -35,7 +34,6 @@
       width: 30px;
     }
 
-    /* RIGHT MIRROR (Vertical Webring Text) */
     #webring-info {
       position: fixed;
       top: 15px;
@@ -94,7 +92,6 @@
       border: none;
     }
 
-    /* ARROWS STYLING */
     .webring-nav {
       position: fixed;
       bottom: 20px;
@@ -110,7 +107,6 @@
     #prev-site { left: 25px; }
     #next-site { right: 25px; }
 
-    /* Video & Overlay */
     #overlay {
       position: fixed;
       top: 0;
@@ -132,9 +128,11 @@
       color: white;
       user-select: none;
       transition: transform 0.3s ease;
-      display: block;        /* Fixes width issues */
-      text-align: center;    /* Keeps centered */
-      will-change: transform; /* Fixes flickering/clipping */
+      display: inline-block;
+      padding-right: 25px;    /* The safety buffer */
+      text-align: center;
+      will-change: transform;
+      white-space: nowrap;
     }
 
     #start-button:hover {
